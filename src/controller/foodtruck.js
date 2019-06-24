@@ -107,7 +107,7 @@ api.post('/reviews/add/:id', (req, res) => {
 //get reviews for a specific foodtruck
 // '/v1/foodtruck/reviews/:id'
 api.get('/reviews/:id', (req, res) => {
-    Review.find({ foodtruck: req.param.id}, (err, reviews) => {
+    Review.find({ foodtruck: req.params.id}, (err, reviews) => {
         if (err) {
             res.send(err);
         }
