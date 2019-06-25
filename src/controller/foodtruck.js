@@ -5,12 +5,14 @@ import FoodTruck from '../model/foodtruck';
 import bodyParser from 'body-parser';
 import Review from '../model/review';
 
+import { authenticate } from '../middleware/authMiddleware';
+
 export default({ config, db }) => {
 let api = Router();
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // '/v1/foodtruck/add
-api.post('/add', urlencodedParser, (req, res) => {
+api.post('/add', authenticate, urlencodedParser, (req, res) => {
     console.log(`Requisiton's Body: ${req.body.city}, ${req.body.name}`);
     let newFoodtruck = new FoodTruck();
     newFoodtruck.name = req.body.name;

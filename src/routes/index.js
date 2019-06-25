@@ -4,6 +4,7 @@ import initializeDb from '../db';
 import middleware from '../middleware';
 import foodtruck from '../controller/foodtruck';
 import newItem from '../controller/registerItem';
+import account from '../controller/account';
 
 let router = express();
 
@@ -16,7 +17,7 @@ initializeDb(db => {
   // api routes v1 (/v1)
   router.use('/foodtruck', foodtruck({ config, db }));
   router.use('/products', newItem({ config, db }));
-
+  router.use('/account', account({ config, db }));
 });
 
 export default router;
